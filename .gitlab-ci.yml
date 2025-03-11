@@ -1,0 +1,20 @@
+include: [component: $CI_SERVER_FQDN/lc-components/id_tokens/id_tokens-component@main]
+
+variables:
+   CUSTOM_CI_BUILDS_DIR: "/usr/workspace/$$USER/JACAMAR-CI"
+
+job1:
+  extends: .body
+job2:
+  extends: .body
+
+
+.body:
+   tags:
+      - dane
+      - shell
+   script:
+      - whoami
+      - pwd
+      - hostname
+      - env | egrep "^CI_" | sort
